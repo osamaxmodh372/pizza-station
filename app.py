@@ -2,6 +2,9 @@ from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
 
 app = Flask(__name__)
+@app.errorhandler(404)
+def page_not_found(e):
+    return redirect(url_for('index'))
 
 def init_db():
     conn = sqlite3.connect('database.db')
