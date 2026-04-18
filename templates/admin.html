@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Pizza Station</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .admin-section {
+            padding: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .admin-section h2 {
+            font-size: 30px;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+        }
+        .count-badge {
+            background: #e4a200;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 25px;
+            display: inline-block;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        th {
+            background: #1a1a1a;
+            color: #e4a200;
+            padding: 15px;
+            text-align: left;
+            font-size: 14px;
+        }
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 14px;
+            color: #333;
+        }
+        tr:hover { background: #fff8e7; }
+        .delete-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 13px;
+            text-decoration: none;
+        }
+        .delete-btn:hover { background: #c0392b; }
+        .empty-msg {
+            text-align: center;
+            padding: 40px;
+            color: #777;
+            font-size: 16px;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            background: #e4a200;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .back-btn:hover { background: #c68f00; }
+        .lang-toggle {
+            float: right;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 768px) {
+            .admin-section { padding: 20px 15px; }
+            table { font-size: 12px; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">🍕 Pizza Station — Admin</div>
+        <ul class="nav-links">
+            <li><a href="/" data-key="nav_home">Home</a></li>
+            <li><a href="/admin" data-key="admin_title">Admin</a></li>
+            <li><button id="langBtn" onclick="toggleLanguage()" class="lang-btn">🌐 العربية</button></li>
+        </ul>
+    </nav>
+
+    <div class="admin-section">
+        <h2>📋 <span data-key="admin_title">Reservations Dashboard</span></h2>
+        <div class="count-badge">
+            <span data-key="admin_total">Total</span>: {{ reservations|length }} <span data-key="admin_res">reservations</span>
+        </div>
+
+        <br>
+        <a href="/" class="back-btn">🏠 <span data-key="nav_home">Home</span></a>
+
+        {% if reservations %}
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th data-key="res_name">Name</th>
+                    <th data-key="res_phone">Phone</th>
+                    <th data-key="res_date">Date</th>
+                    <th data-key="res_guests">Guests</th>
+                    <th data-key="admin_action">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in reservations %}
+                <tr>
+                    <td>{{ r[0] }}</td>
+                    <td>{{ r[1] }}</td>
+                    <td>{{ r[2] }}</td>
+                    <td>{{ r[3] }}</td>
+                    <td>{{ r[4] }}</td>
+                    <td>
+                        <a href="/admin/delete/{{ r[0] }}"
+                           class="delete-btn"
+                           onclick="return confirm('Are you sure?')">
+                           🗑 <span data-key="my_res_delete">Delete</span>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div class="empty-msg">
+            📭 <span data-key="admin_empty">No reservations yet</span>
+        </div>
+        {% endif %}
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
