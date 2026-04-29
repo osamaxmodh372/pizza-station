@@ -83,7 +83,8 @@ const translations = {
         con_name: "Your Name", con_name_ph: "Enter your name",
         con_email: "Your Email", con_email_ph: "Enter your email",
         con_msg: "Message", con_msg_ph: "Write your message here",
-        con_btn: "Send Message", success_msg: "✅ Message sent successfully!"
+        con_btn: "Send Message", success_msg: "✅ Message sent successfully!",
+        duplicate_error: "You already have a reservation on this date"
     },
     ar: {
         nav_home: "الرئيسية", nav_menu: "القائمة", nav_reservation: "الحجز",
@@ -169,7 +170,8 @@ const translations = {
         con_name: "اسمك", con_name_ph: "أدخل اسمك",
         con_email: "بريدك الإلكتروني", con_email_ph: "أدخل بريدك الإلكتروني",
         con_msg: "الرسالة", con_msg_ph: "اكتب رسالتك هنا",
-        con_btn: "إرسال الرسالة", success_msg: "✅ تم إرسال الرسالة بنجاح!"
+        con_btn: "إرسال الرسالة", success_msg: "✅ تم إرسال الرسالة بنجاح!",
+        duplicate_error: "لا يمكنك الحجز في هذا التاريخ — لديك حجز مسبق"
     }
 };
 
@@ -325,4 +327,4 @@ if (contactForm) {
 
 document.addEventListener('DOMContentLoaded', function() {
     applyLanguage(currentLang);
-});
+}); 

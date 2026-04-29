@@ -35,19 +35,10 @@
     <p data-key="res_desc">Fill in the form below to reserve your table</p>
 
     {% if duplicate_error %}
-    <div style="background:#ff4444; color:white; padding:15px; border-radius:8px; margin-bottom:20px; text-align:center; font-weight:bold;">
-        ⚠️ لديك حجز مسبق في هذا التاريخ — You already have a reservation on this date
-    </div>
+    <p id="duplicateError" style="color:#e74c3c; font-size:14px; margin-bottom:15px; text-align:center;">
+        ❌ <span data-key="duplicate_error">You already have a reservation on this date</span>
+    </p>
     {% endif %}
-
-{% if duplicate_error %}
-<div style="background:#ff4444; color:white; padding:15px; border-radius:8px; margin-bottom:20px; text-align:center; font-weight:bold;">
-    ⚠️ لديك حجز مسبق في هذا التاريخ — You already have a reservation on this date
-</div>
-{% endif %}
-
-
-
     <form class="reservation-form" action="/reservation" method="POST" id="reservationForm">
 
         <div class="form-group">
