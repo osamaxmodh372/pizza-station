@@ -77,12 +77,17 @@ def reservation():
         guests = request.form['guests']
         conn = get_conn()
         c = conn.cursor()
+        c.execute("SELECT id FROM reservations WHERE phone=%s AND date=%s", (phone, date))
+        existing = c.fetchone()
+        if existing:
+            conn.close()
+            return render_template('reservation.html', duplicate_error=True)
         c.execute("INSERT INTO reservations (name, phone, date, guests) VALUES (%s, %s, %s, %s)",
                   (name, phone, date, guests))
         conn.commit()
         conn.close()
         return redirect(url_for('success', name=name, date=date, guests=guests))
-    return render_template('reservation.html')
+    return render_template('reservation.html', duplicate_error=False)
 
 @app.route('/success')
 def success():
