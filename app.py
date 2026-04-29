@@ -4,7 +4,7 @@ import os
 
 app = Flask(__name__)
 
-DATABASE_URL = os.environ.get('DATABASE_URL', 'postgresql://postgres.aojdzambymqqfvwhnszk:osamaxmodh372@aws-0-ap-northeast-1.pooler.supabase.com:6543/postgres')
+DATABASE_URL = os.environ.get('DATABASE_URL', 'postgresql://postgres.aojdzambymqqfvwhnszk:osamaxmodh372@aws-1-ap-northeast-1.pooler.supabase.com:5432/postgres')
 
 def get_conn():
     return psycopg2.connect(DATABASE_URL)
