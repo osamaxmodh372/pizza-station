@@ -92,5 +92,11 @@
     </div>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('lang') || 'en';
+            applyLanguage(savedLang);
+        });
+    </script>
 </body>
 </html>

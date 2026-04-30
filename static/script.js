@@ -50,6 +50,9 @@ const translations = {
         success_title: "Booking Confirmed!",
         success_desc: "Your table has been successfully reserved.",
         success_see_you: "We look forward to seeing you at Pizza Station 🍕",
+        contact_success_title: "Message Sent!",
+        contact_success_desc: "Your message has been sent successfully. We will get back to you soon.",
+        contact_send_another: "Send Another",
 
         my_res_title: "📋 My Reservations",
         my_res_desc: "Enter your phone number to view your reservations",
@@ -137,6 +140,9 @@ const translations = {
         success_title: "تم تأكيد الحجز!",
         success_desc: "تم حجز طاولتك بنجاح.",
         success_see_you: "نتطلع لرؤيتك في بيتزا ستيشن 🍕",
+        contact_success_title: "تم إرسال الرسالة!",
+        contact_success_desc: "تم إرسال رسالتك بنجاح. سنتواصل معك قريباً.",
+        contact_send_another: "إرسال رسالة أخرى",
 
         my_res_title: "📋 حجوزاتي",
         my_res_desc: "أدخل رقم جوالك لعرض حجوزاتك",
